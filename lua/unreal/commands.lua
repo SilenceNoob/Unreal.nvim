@@ -583,7 +583,7 @@ function Stage_UbtGenCmd()
 
     local cmd = CurrentGenData.ubtPath .. " -Project=" ..
         --CurrentGenData.projectPath .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
-        CurrentGenData.prjName .. ".uproject\"" .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
+        "\"" .. CurrentGenData.prjName .. ".uproject\"" .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
         CurrentGenData.prjName .. CurrentGenData.targetNameSuffix .. " " .. CurrentGenData.target.Configuration .. " " ..
         CurrentGenData.target.PlatformName .. " -headers"
 
