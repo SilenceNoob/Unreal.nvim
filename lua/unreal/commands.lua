@@ -582,7 +582,8 @@ function Stage_UbtGenCmd()
     })
 
     local cmd = CurrentGenData.ubtPath .. " -Project=" ..
-        CurrentGenData.projectPath .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
+        --CurrentGenData.projectPath .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
+        CurrentGenData.prjName .. ".uproject\"" .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
         CurrentGenData.prjName .. CurrentGenData.targetNameSuffix .. " " .. CurrentGenData.target.Configuration .. " " ..
         CurrentGenData.target.PlatformName .. " -headers"
 
@@ -602,8 +603,8 @@ end
 
 Commands.renderedAnim = ""
 
- function Commands.GetStatusBar()
-     local status = "unset"
+function Commands.GetStatusBar()
+    local status = "unset"
     if CurrentGenData:GetTaskStatus("final") == TaskState.completed then
         status = Commands.renderedAnim .. " Build completed!"
     elseif CurrentGenData.currentTask ~= "" then
@@ -615,9 +616,9 @@ Commands.renderedAnim = ""
 end
 
 function DispatchUnrealnvimCb(data)
-     log("DispatchUnrealnvimCb()")
-     Commands.taskCoroutine = coroutine.create(FuncBind(DispatchCallbackCoroutine, data))
- end
+    log("DispatchUnrealnvimCb()")
+    Commands.taskCoroutine = coroutine.create(FuncBind(DispatchCallbackCoroutine, data))
+end
 
 function DispatchCallbackCoroutine(data)
     coroutine.yield()
@@ -641,7 +642,7 @@ function PromptBuildTargetIndex()
         if x.withEditor then
             configName = configName .. "-Editor"
         end
-       print(tostring(i) .. ". " .. configName)
+        print(tostring(i) .. ". " .. configName)
     end
     return tonumber(vim.fn.input "<number> : ")
 end
