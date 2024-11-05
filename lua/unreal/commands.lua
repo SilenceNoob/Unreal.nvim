@@ -581,7 +581,7 @@ function Stage_UbtGenCmd()
         callback = FuncBind(DispatchUnrealnvimCb, "headers")
     })
 
-    local cmd = CurrentGenData.ubtPath .. " -project=" ..
+    local cmd = CurrentGenData.ubtPath .. " -Project=" ..
         CurrentGenData.projectPath .. " " .. CurrentGenData.target.UbtExtraFlags .. " " ..
         CurrentGenData.prjName .. CurrentGenData.targetNameSuffix .. " " .. CurrentGenData.target.Configuration .. " " ..
         CurrentGenData.target.PlatformName .. " -headers"
